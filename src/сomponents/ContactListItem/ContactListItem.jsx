@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import { useDeleteContactsMutation } from 'redux/api/ContactsApi';
+
 import { toast } from 'react-toastify';
 import { Flex, Box, Button } from '@chakra-ui/react';
-import { useDeleteContactsMutation } from 'redux/ContactsApi';
 
-function ContactListItem({ name, number, id }) {
+const ContactListItem = ({ name, number, id }) => {
   const [deleteContacts, { isLoading: isDeleting, isSuccess, error }] =
     useDeleteContactsMutation();
 
@@ -27,7 +29,7 @@ function ContactListItem({ name, number, id }) {
       </Flex>
     </Box>
   );
-}
+};
 
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,

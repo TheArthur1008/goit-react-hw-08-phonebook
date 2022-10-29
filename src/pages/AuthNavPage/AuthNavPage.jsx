@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import {
   Stack,
   Flex,
@@ -6,10 +8,10 @@ import {
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
-import { NavLink } from 'react-router-dom';
-import Image from '../image/dark-macbook.png';
 
-export default function WithBackgroundImage() {
+import Image from '../../image/dark-macbook.png';
+
+const WithBackgroundImage = () => {
   return (
     <Flex
       w={'full'}
@@ -60,4 +62,6 @@ export default function WithBackgroundImage() {
       </VStack>
     </Flex>
   );
-}
+};
+
+export default WithBackgroundImage;

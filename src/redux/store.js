@@ -13,10 +13,10 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { ContactsApi } from './ContactsApi';
-import { AuthApi } from './AuthApi';
-import { FilterSlice } from './FilterSlice';
-import { AuthSlice } from './AuthSlise';
+import { ContactsApi } from './api/ContactsApi';
+import { AuthApi } from './api/AuthApi';
+import { FilterSlice } from './slice/FilterSlice';
+import { AuthSlice } from './slice/AuthSlise';
 
 const authPersistConfig = {
   key: 'auth',

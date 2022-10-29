@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import { useGetContactQuery } from 'redux/ContactsApi';
+import { useGetContactQuery } from 'redux/api/ContactsApi';
 import ContactListItem from 'сomponents/ContactListItem';
+
 import { Spinner } from '@chakra-ui/react';
 
-function ContactList() {
+const ContactList = () => {
   const { data, isFetching } = useGetContactQuery();
   const filter = useSelector(state => state.filter);
 
@@ -35,6 +36,6 @@ function ContactList() {
       )}
     </>
   );
-}
+};
 
 export default ContactList;

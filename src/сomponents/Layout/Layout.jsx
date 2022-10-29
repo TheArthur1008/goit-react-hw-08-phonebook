@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getLoggedin } from 'redux/AuthSlise';
-import AppBar from './AppBar/AppBar';
+import { getLoggedin } from 'redux/slice/AuthSlise';
+import AppBar from '../AppBar/AppBar';
 
-export default function Layout() {
+const Layout = () => {
   const isLoggedin = useSelector(getLoggedin);
   return (
     <>
@@ -11,4 +11,6 @@ export default function Layout() {
       <Outlet />
     </>
   );
-}
+};
+
+export default Layout;

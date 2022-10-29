@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { Navigate, useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { useUserSignupMutation } from 'redux/api/AuthApi';
+
 import {
   Flex,
   Box,
@@ -13,13 +17,11 @@ import {
   useColorModeValue,
   Link,
 } from '@chakra-ui/react';
-import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { Navigate, useNavigate, useLocation, NavLink } from 'react-router-dom';
-import { useUserSignupMutation } from 'redux/AuthApi';
-import Image from '../image/dark-macbook.png';
 
-export default function SignupView() {
+import Image from '../../image/dark-macbook.png';
+
+const SignupView = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -164,4 +166,6 @@ export default function SignupView() {
       </Stack>
     </Flex>
   );
-}
+};
+
+export default SignupView;

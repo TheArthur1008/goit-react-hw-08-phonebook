@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useAddContactsMutation, useGetContactQuery } from 'redux/ContactsApi';
+
+import {
+  useAddContactsMutation,
+  useGetContactQuery,
+} from 'redux/api/ContactsApi';
+
 import { toast } from 'react-toastify';
 import { Stack, Input, Button } from '@chakra-ui/react';
 
-function ContactForm() {
+const ContactForm = () => {
   const [addContacts, { isLoading, isSuccess, error }] =
     useAddContactsMutation();
   const { data } = useGetContactQuery();
@@ -82,6 +87,6 @@ function ContactForm() {
       </Stack>
     </form>
   );
-}
+};
 
 export default ContactForm;

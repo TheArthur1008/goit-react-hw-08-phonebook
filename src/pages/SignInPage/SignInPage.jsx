@@ -1,3 +1,8 @@
+import { useState, useEffect } from 'react';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+
+import { useUserLoginMutation } from 'redux/api/AuthApi';
+
 import {
   Flex,
   Box,
@@ -10,12 +15,10 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { toast } from 'react-toastify';
-import { useState, useEffect } from 'react';
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { useUserLoginMutation } from 'redux/AuthApi';
-import Image from '../image/dark-macbook.png';
 
-export default function LoginView() {
+import Image from '../../image/dark-macbook.png';
+
+const LoginView = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userLogin, { isSuccess, isError }] = useUserLoginMutation();
@@ -130,4 +133,6 @@ export default function LoginView() {
       </Stack>
     </Flex>
   );
-}
+};
+
+export default LoginView;

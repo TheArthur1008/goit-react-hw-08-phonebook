@@ -1,14 +1,15 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { getLoggedin } from 'redux/slice/AuthSlise';
 import Filter from 'сomponents/Filter';
 import ContactList from 'сomponents/ContactList';
 import ContactForm from 'сomponents/ContactForm';
-import { Heading } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
-import { getLoggedin } from 'redux/AuthSlise';
-import { Box } from '@chakra-ui/react';
 
-function ContactsView() {
+import { Heading, Box } from '@chakra-ui/react';
+
+const ContactsView = () => {
   const isLogdedin = useSelector(getLoggedin);
   return (
     <Box w="400px" mx="auto" my="6">
@@ -20,6 +21,6 @@ function ContactsView() {
       <ContactList />
     </Box>
   );
-}
+};
 
 export default ContactsView;

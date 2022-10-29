@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/FilterSlice';
+import { setFilter } from 'redux/slice/FilterSlice';
 import { Stack, Input } from '@chakra-ui/react';
 
-function Filter() {
+const Filter = () => {
   const dispatch = useDispatch();
   const filterValue = useSelector(state => state.filter);
 
@@ -21,6 +21,6 @@ function Filter() {
       />
     </Stack>
   );
-}
+};
 
 export default Filter;
