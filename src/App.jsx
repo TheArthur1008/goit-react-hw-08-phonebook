@@ -2,8 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { getToken } from 'redux/slice/AuthSlise';
-import { useGetCurrentUserQuery } from 'redux/api/AuthApi';
+import { getLoggedin, getToken } from 'redux/slice/AuthSlise';
+import { useLazyGetCurrentUserQuery } from 'redux/api/AuthApi';
 
 import PublicRoute from 'сomponents/Routes/PublicRoute';
 import PrivateRoute from 'сomponents/Routes/PrivateRoute';
@@ -11,6 +11,7 @@ import PrivateRoute from 'сomponents/Routes/PrivateRoute';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 const Layout = lazy(() => import('сomponents/Layout/Layout'));
 const AuthNavPage = lazy(() => import('pages/AuthNavPage/AuthNavPage'));
@@ -20,7 +21,14 @@ const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 
 const App = () => {
   const token = useSelector(getToken);
-  useGetCurrentUserQuery(null, { skip: !token });
+  const isLogdedin = useSelector(getLoggedin);
+
+  const [fetchUser] = useLazyGetCurrentUserQuery();
+  useEffect(() => {
+    if (!isLogdedin && token) {
+      fetchUser(null, { skip: !token });
+    }
+  }, [fetchUser, isLogdedin]);
 
   return (
     <Box>

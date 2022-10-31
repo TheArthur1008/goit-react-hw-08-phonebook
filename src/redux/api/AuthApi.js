@@ -18,23 +18,19 @@ export const AuthApi = createApi({
   tagTypes: ['User'],
 
   endpoints: builder => ({
-    getCurrentUser: builder.query({
-      query: () => '/users/current',
-    }),
-
     userSignup: builder.mutation({
-      query: body => ({
+      query: newUser => ({
         url: `/users/signup`,
         method: 'POST',
-        body: body,
+        body: newUser,
       }),
     }),
 
     userLogin: builder.mutation({
-      query: body => ({
+      query: user => ({
         url: `/users/login`,
         method: 'POST',
-        body: body,
+        body: user,
       }),
     }),
 
@@ -44,12 +40,21 @@ export const AuthApi = createApi({
         method: 'POST',
       }),
     }),
+    getCurrentUser: builder.query({
+      query: () => ({
+        url: '/users/current',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
 export const {
   useGetCurrentUserQuery,
+  useLazyGetCurrentUserQuery,
   useUserLoginMutation,
   useUserLogoutMutation,
   useUserSignupMutation,
 } = AuthApi;
+
+

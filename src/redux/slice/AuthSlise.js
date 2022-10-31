@@ -13,13 +13,6 @@ export const AuthSlice = createSlice({
 
   extraReducers: builder => {
     builder.addMatcher(
-      AuthApi.endpoints.getCurrentUser.matchFulfilled,
-      (state, { payload }) => {
-        state.user = payload;
-        state.isLoggedin = true;
-      }
-    );
-    builder.addMatcher(
       AuthApi.endpoints.userSignup.matchFulfilled,
       (state, { payload }) => {
         state.user = payload.user;
@@ -36,6 +29,13 @@ export const AuthSlice = createSlice({
       }
     );
     builder.addMatcher(
+      AuthApi.endpoints.getCurrentUser.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload;
+        state.isLoggedin = true;
+      }
+    );
+    builder.addMatcher(
       AuthApi.endpoints.userLogout.matchFulfilled,
       (state, _) => {
         return (state = initialState);
@@ -47,3 +47,4 @@ export const AuthSlice = createSlice({
 export const getUserName = state => state.auth.user.name;
 export const getToken = state => state.auth.token;
 export const getLoggedin = state => state.auth.isLoggedin;
+// export const getCurrentUser = state => state.auth.getCurrentUser;
