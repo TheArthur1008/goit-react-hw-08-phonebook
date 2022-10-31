@@ -28,7 +28,7 @@ const App = () => {
     if (!isLogdedin && token) {
       fetchUser(null, { skip: !token });
     }
-  }, [fetchUser, isLogdedin]);
+  }, [fetchUser, isLogdedin, token]);
 
   return (
     <Box>
